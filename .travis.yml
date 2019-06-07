@@ -6,10 +6,10 @@ before_install:
 script:
  - docker run -e CI=true surajnmandhare/test-react npm run test -- --coverage
 after_success:
- - docker build -t surajnmandhare/multi-client -f ./client
- - docker build -t surajnmandhare/multi-worker -f ./worker
- - docker build -t surajnmandhare/multi-server -f ./server
- - docker build -t surajnmandhare/multi-nginx -f ./nginx
+ - docker build -t surajnmandhare/multi-client ./client
+ - docker build -t surajnmandhare/multi-worker ./worker
+ - docker build -t surajnmandhare/multi-server ./server
+ - docker build -t surajnmandhare/multi-nginx ./nginx
 ##Login
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  - docker push surajnmandhare/multi-client
