@@ -16,4 +16,18 @@ after_success:
  - docker push surajnmandhare/multi-worker
  - docker push surajnmandhare/multi-server
  - docker push surajnmandhare/multi-nginx
+##DEPLOY
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEYID
+  secret_access_key:
+    secure: "$SECRETACCESSKEY"
+  region: "us-east-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-294893512319"
+  bucker_path: "docker-multi"
+  on:
+    branch: master
+
 
